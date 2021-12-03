@@ -28,7 +28,7 @@ defmodule App.Challenges.Day1 do
     |> Map.get(:total)
   end
 
-    @doc ~S"""
+  @doc ~S"""
     Split input into a sliding window of sums. The sums are the total of the window length.
 
     ## Examples
@@ -42,7 +42,8 @@ defmodule App.Challenges.Day1 do
       iex> App.Challenges.Day1.sliding_window([ 199, 200, 208, 210 ], 3)
       [607, 618]
   """
-  def sliding_window(elevations, window_size) when is_integer(window_size) and is_list(elevations) do
+  def sliding_window(elevations, window_size)
+      when is_integer(window_size) and is_list(elevations) do
     Stream.chunk_every(elevations, window_size, 1, :discard)
     |> Enum.map(fn chunk -> Enum.sum(chunk) end)
     |> Enum.to_list()
@@ -58,7 +59,6 @@ defmodule App.Challenges.Day1 do
     get_input()
     |> determine_number_of_increases()
   end
-
 
   @doc ~S"""
   Split input into a sliding window of sums. The sums are the total of the window length.
