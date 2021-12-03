@@ -35,8 +35,14 @@ defmodule App.Challenges.Day1 do
 
       iex> App.Challenges.Day1.sliding_window([ 199, 200, 208, 210, 200, 207, 240, 269, 260, 263 ], 3)
       [607, 618, 618, 617, 647, 716, 769, 792]
+
+      iex> App.Challenges.Day1.sliding_window([ 199, 200 ], 3)
+      []
+
+      iex> App.Challenges.Day1.sliding_window([ 199, 200, 208, 210 ], 3)
+      [607, 618]
   """
-  def sliding_window(elevations, window_size) when is_integer(window_size) do
+  def sliding_window(elevations, window_size) when is_integer(window_size) and is_list(elevations) do
     Stream.chunk_every(elevations, window_size, 1, :discard)
     |> Enum.map(fn chunk -> Enum.sum(chunk) end)
     |> Enum.to_list()
