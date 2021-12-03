@@ -33,7 +33,7 @@ defmodule App.Challenges.Day1 do
 
     ## Examples
 
-      iex> app.challenges.day1.sliding_window([ 199, 200, 208, 210, 200, 207, 240, 269, 260, 263 ], 3)
+      iex> App.Challenges.Day1.sliding_window([ 199, 200, 208, 210, 200, 207, 240, 269, 260, 263 ], 3)
       [607, 618, 618, 617, 647, 716, 769, 792]
   """
   def sliding_window(elevations, window_size) when is_integer(window_size) do
@@ -42,11 +42,26 @@ defmodule App.Challenges.Day1 do
     |> Enum.to_list()
   end
 
+  @doc ~S"""
+    ## Examples
+
+    iex> App.Challenges.Day1.part_1()
+    1676
+  """
   def part_1 do
     get_input()
     |> determine_number_of_increases()
   end
 
+
+  @doc ~S"""
+  Split input into a sliding window of sums. The sums are the total of the window length.
+
+  ## Examples
+
+    iex> App.Challenges.Day1.part_2()
+    1706
+  """
   def part_2 do
     get_input()
     |> sliding_window(3)
